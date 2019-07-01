@@ -64,11 +64,13 @@ joint.shapes.custom.SubjectElementView = joint.dia.ElementView.extend({
   updateBox: function () {
     let sx = 0
     let sy = 0
+    let sfont = 0
 
     /** Get the translate value of the paper. The tx and ty values will be used when the canvas is dragged around. */
     if (typeof this.paper !== 'undefined') {
       sx = this.paper.scale().sx
       sy = this.paper.scale().sy
+      sfont = this.paper.scale().sx * 20
     }
 
     const customAttrs = this.model.get('customAttrs')
@@ -103,7 +105,8 @@ joint.shapes.custom.SubjectElementView = joint.dia.ElementView.extend({
     seName.css({
       position: 'fixed',
       left: left + (bboxWidth / 2) - ((seName.width()) / 2),
-      top: top + (bboxHeight / 2) - ((seName.height() * sy) / (2 * sy))
+      top: top + (bboxHeight / 2) - ((seName.height() * sy) / (2 * sy)),
+      'font-size': sfont
     })
 
     seRemoveBtn.css({
@@ -189,11 +192,13 @@ joint.shapes.custom.InterfaceSubjectElementView = joint.dia.ElementView.extend({
   updateBox: function () {
     let sx = 0
     let sy = 0
+    let sfont = 0
 
     /** Get the translate value of the paper. The tx and ty values will be used when the canvas is dragged around. */
     if (typeof this.paper !== 'undefined') {
       sx = this.paper.scale().sx
       sy = this.paper.scale().sy
+      sfont = this.paper.scale().sx * 20
     }
 
     const customAttrs = this.model.get('customAttrs')
@@ -228,7 +233,8 @@ joint.shapes.custom.InterfaceSubjectElementView = joint.dia.ElementView.extend({
     seName.css({
       position: 'fixed',
       left: left + (bboxWidth / 2) - ((seName.width()) / 2),
-      top: top + (bboxHeight / 2) - ((seName.height() * sy) / (2 * sy))
+      top: top + (bboxHeight / 2) - ((seName.height() * sy) / (2 * sy)),
+      'font-size': sfont
     })
 
     seRemoveBtn.css({
@@ -308,6 +314,7 @@ joint.shapes.custom.MessageExchangeElementView = joint.dia.LinkView.extend({
     let sy = 0
     let tx = 0
     let ty = 0
+    let sfont = 0
 
     /** Get the translate value of the paper. The tx and ty values will be used when the canvas is dragged around. */
     if (typeof this.paper !== 'undefined') {
@@ -315,6 +322,7 @@ joint.shapes.custom.MessageExchangeElementView = joint.dia.LinkView.extend({
       sy = this.paper.scale().sy
       tx = this.paper.translate().tx
       ty = this.paper.translate().ty
+      sfont = this.paper.scale().sx * 20
     }
 
     const zIndex = this.model.get('z')
@@ -375,13 +383,15 @@ joint.shapes.custom.MessageExchangeElementView = joint.dia.LinkView.extend({
     unidirectional.css({
       position: 'fixed',
       left: left + (boxWidth / 2) - (unidirectional.width() / 2),
-      top: top + (5 * sy) + (boxHeight / (2 * sy)) + ((unidirectional.height() * sy) / 2)
+      top: top + (5 * sy) + (boxHeight / (2 * sy)) + ((unidirectional.height() * sy) / 2),
+      'font-size': sfont * 2
     })
 
     bidirectional.css({
       position: 'fixed',
       left: left + (boxWidth / 2) - (bidirectional.width() / 2),
-      top: top + (5 * sy) + (boxHeight / (2 * sy)) + ((bidirectional.height() * sy) / 2)
+      top: top + (5 * sy) + (boxHeight / (2 * sy)) + ((bidirectional.height() * sy) / 2),
+      'font-size': sfont * 2
     })
 
     removeBtn.css({
@@ -462,11 +472,13 @@ joint.shapes.custom.SendStateElementView = joint.dia.ElementView.extend({
   updateBox: function () {
     let sx = 0
     let sy = 0
+    let sfont = 0
 
     /** Get the translate value of the paper. The tx and ty values will be used when the canvas is dragged around. */
     if (typeof this.paper !== 'undefined') {
       sx = this.paper.scale().sx
       sy = this.paper.scale().sy
+      sfont = this.paper.scale().sx * 20
     }
 
     const customAttrs = this.model.get('customAttrs')
@@ -477,6 +489,7 @@ joint.shapes.custom.SendStateElementView = joint.dia.ElementView.extend({
     const sseRemoveBtn = this.$box.find('.SendStateElement__remove-btn')
     const sseConnectorBtn = this.$box.find('.SendStateElement__connector-btn')
     const sseIndicator = this.$box.find('.SendStateElement__indicator')
+    const sseIcon = this.$box.find('.SendStateElement__icon')
 
     const bboxWidth = modelBbox.width * sx
     const bboxHeight = modelBbox.height * sy
@@ -489,6 +502,9 @@ joint.shapes.custom.SendStateElementView = joint.dia.ElementView.extend({
       left = left + (5 * sx)
       top = top + (5 * sy)
     }
+
+    sseIcon.css({'font-size': sfont})
+    sseIndicator.css({'font-size': sfont})
 
     if (customAttrs.startState) {
       sseIndicator.css({visibility: 'visible'})
@@ -514,7 +530,8 @@ joint.shapes.custom.SendStateElementView = joint.dia.ElementView.extend({
     sseName.css({
       position: 'fixed',
       left: left + (bboxWidth / 2) - ((sseName.width()) / 2),
-      top: top + (bboxHeight / 2) - ((sseName.height() * sy) / (2 * sy))
+      top: top + (bboxHeight / 2) - ((sseName.height() * sy) / (2 * sy)),
+      'font-size': sfont
     })
 
     sseRemoveBtn.css({
@@ -604,11 +621,13 @@ joint.shapes.custom.ReceiveStateElementView = joint.dia.ElementView.extend({
   updateBox: function () {
     let sx = 0
     let sy = 0
+    let sfont = 0
 
     /** Get the translate value of the paper. The tx and ty values will be used when the canvas is dragged around. */
     if (typeof this.paper !== 'undefined') {
       sx = this.paper.scale().sx
       sy = this.paper.scale().sy
+      sfont = this.paper.scale().sx * 20
     }
 
     const customAttrs = this.model.get('customAttrs')
@@ -619,6 +638,7 @@ joint.shapes.custom.ReceiveStateElementView = joint.dia.ElementView.extend({
     const rseRemoveBtn = this.$box.find('.ReceiveStateElement__remove-btn')
     const rseConnectorBtn = this.$box.find('.ReceiveStateElement__connector-btn')
     const rseIndicator = this.$box.find('.ReceiveStateElement__indicator')
+    const rseIcon = this.$box.find('.ReceiveStateElement__icon')
 
     const bboxWidth = modelBbox.width * sx
     const bboxHeight = modelBbox.height * sy
@@ -626,6 +646,9 @@ joint.shapes.custom.ReceiveStateElementView = joint.dia.ElementView.extend({
     let top = bbox.y + 48
 
     rseName.text(shorten(customAttrs.name, 90))
+
+    rseIcon.css({'font-size': sfont})
+    rseIndicator.css({'font-size': sfont})
 
     if (customAttrs.isHighlighted) {
       left = left + (5 * sx)
@@ -656,7 +679,8 @@ joint.shapes.custom.ReceiveStateElementView = joint.dia.ElementView.extend({
     rseName.css({
       position: 'fixed',
       left: left + (bboxWidth / 2) - ((rseName.width()) / 2),
-      top: top + (bboxHeight / 2) - ((rseName.height() * sy) / (2 * sy))
+      top: top + (bboxHeight / 2) - ((rseName.height() * sy) / (2 * sy)),
+      'font-size': sfont
     })
 
     rseRemoveBtn.css({
@@ -746,11 +770,13 @@ joint.shapes.custom.FunctionStateElementView = joint.dia.ElementView.extend({
   updateBox: function () {
     let sx = 0
     let sy = 0
+    let sfont = 0
 
     /** Get the translate value of the paper. The tx and ty values will be used when the canvas is dragged around. */
     if (typeof this.paper !== 'undefined') {
       sx = this.paper.scale().sx
       sy = this.paper.scale().sy
+      sfont = this.paper.scale().sx * 20
     }
 
     const customAttrs = this.model.get('customAttrs')
@@ -761,6 +787,7 @@ joint.shapes.custom.FunctionStateElementView = joint.dia.ElementView.extend({
     const fseRemoveBtn = this.$box.find('.FunctionStateElement__remove-btn')
     const fseConnectorBtn = this.$box.find('.FunctionStateElement__connector-btn')
     const fseIndicator = this.$box.find('.FunctionStateElement__indicator')
+    const fseIcon = this.$box.find('.FunctionStateElement__icon')
 
     const bboxWidth = modelBbox.width * sx
     const bboxHeight = modelBbox.height * sy
@@ -768,6 +795,9 @@ joint.shapes.custom.FunctionStateElementView = joint.dia.ElementView.extend({
     let top = bbox.y + 48
 
     fseName.text(shorten(customAttrs.name, 90))
+
+    fseIcon.css({'font-size': sfont})
+    fseIndicator.css({'font-size': sfont})
 
     if (customAttrs.isHighlighted) {
       left = left + (5 * sx)
@@ -798,7 +828,8 @@ joint.shapes.custom.FunctionStateElementView = joint.dia.ElementView.extend({
     fseName.css({
       position: 'fixed',
       left: left + (bboxWidth / 2) - ((fseName.width()) / 2),
-      top: top + (bboxHeight / 2) - ((fseName.height() * sy) / (2 * sy))
+      top: top + (bboxHeight / 2) - ((fseName.height() * sy) / (2 * sy)),
+      'font-size': sfont
     })
 
     fseRemoveBtn.css({
@@ -878,6 +909,7 @@ joint.shapes.custom.SendTransitionElementView = joint.dia.LinkView.extend({
     let sy = 0
     let tx = 0
     let ty = 0
+    let sfont = 0
 
     /** Get the translate value of the paper. The tx and ty values will be used when the canvas is dragged around. */
     if (typeof this.paper !== 'undefined') {
@@ -885,6 +917,7 @@ joint.shapes.custom.SendTransitionElementView = joint.dia.LinkView.extend({
       sy = this.paper.scale().sy
       tx = this.paper.translate().tx
       ty = this.paper.translate().ty
+      sfont = this.paper.scale().sx * 20
     }
 
     const zIndex = this.model.get('z')
@@ -904,9 +937,11 @@ joint.shapes.custom.SendTransitionElementView = joint.dia.LinkView.extend({
     if (customAttrs.subject !== null) {
       subject.text('S: ' + jointService.getSubjectNameById(customAttrs.subject))
     }
+    subject.css({'font-size': sfont})
     if (customAttrs.messageSpecification !== null) {
       message.text('M: ' + jointService.getMessageSpecificationNameById(customAttrs.messageSpecification))
     }
+    message.css({'font-size': sfont})
 
     const boxWidth = 180 * sx
     const boxHeight = 80 * sy
@@ -995,6 +1030,7 @@ joint.shapes.custom.ReceiveTransitionElementView = joint.dia.LinkView.extend({
     let sy = 0
     let tx = 0
     let ty = 0
+    let sfont = 0
 
     /** Get the translate value of the paper. The tx and ty values will be used when the canvas is dragged around. */
     if (typeof this.paper !== 'undefined') {
@@ -1002,6 +1038,7 @@ joint.shapes.custom.ReceiveTransitionElementView = joint.dia.LinkView.extend({
       sy = this.paper.scale().sy
       tx = this.paper.translate().tx
       ty = this.paper.translate().ty
+      sfont = this.paper.scale().sx * 20
     }
 
     const zIndex = this.model.get('z')
@@ -1021,9 +1058,11 @@ joint.shapes.custom.ReceiveTransitionElementView = joint.dia.LinkView.extend({
     if (customAttrs.subject !== null) {
       subject.text('S: ' + jointService.getSubjectNameById(customAttrs.subject))
     }
+    subject.css({'font-size': sfont * 2})
     if (customAttrs.messageSpecification !== null) {
       message.text('M: ' + jointService.getMessageSpecificationNameById(customAttrs.messageSpecification))
     }
+    message.css({'font-size': sfont * 2})
 
     const boxWidth = 180 * sx
     const boxHeight = 80 * sy
@@ -1111,6 +1150,7 @@ joint.shapes.custom.FunctionTransitionElementView = joint.dia.LinkView.extend({
     let sy = 0
     let tx = 0
     let ty = 0
+    let sfont = 0
 
     /** Get the translate value of the paper. The tx and ty values will be used when the canvas is dragged around. */
     if (typeof this.paper !== 'undefined') {
@@ -1118,6 +1158,7 @@ joint.shapes.custom.FunctionTransitionElementView = joint.dia.LinkView.extend({
       sy = this.paper.scale().sy
       tx = this.paper.translate().tx
       ty = this.paper.translate().ty
+      sfont = this.paper.scale().sx * 20
     }
 
     const zIndex = this.model.get('z')
@@ -1140,6 +1181,7 @@ joint.shapes.custom.FunctionTransitionElementView = joint.dia.LinkView.extend({
     if (customAttrs.name !== null) {
       name.text(customAttrs.name)
     }
+    name.css({'font-size': sfont * 2})
 
     const boxWidth = 180 * sx
     const boxHeight = 80 * sy
