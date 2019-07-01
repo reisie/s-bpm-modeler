@@ -105,7 +105,7 @@
             this.generateTreeData()
             this.clearData()
             this.hide()
-            this.sendNotification('Creation successful', 'Process layer was created successfully.', 'success')
+            this.sendNotification('Creation successful', 'Process model was created successfully.', 'success')
           })
           .catch(error => {
             this.sendNotification('Creation failed', error.message, 'error')
