@@ -70,17 +70,26 @@
           firstName: null,
           lastName: null,
           email: null,
-          password: null
+          password: null,
+          strategy: 'local'
         }
       }
     },
     methods: {
       ...mapActions('auth', ['register']),
+      ...mapActions('auth', ['login']),
       onSubmit () {
         this.register(this.user)
           .then(response => {
-            this.sendNotification('Registration successful', null, 'success')
-            this.$router.replace({path: '/login'})
+            this.sendNotification('Registration successful, logging on...', null, 'success')
+            this.login(this.user)
+              .then(response => {
+                this.$router.replace({path: '/main/dashboard'})
+              })
+              .catch(() => {
+                this.sendNotification('Login failed', 'Something went wrong.', 'error')
+                this.$router.replace({path: '/login'})
+              })
           })
           .catch(error => {
             this.sendNotification('Registration failed', error.message, 'error')
