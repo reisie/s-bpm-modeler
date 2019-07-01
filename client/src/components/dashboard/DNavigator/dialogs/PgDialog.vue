@@ -16,6 +16,7 @@
                   type="text"
                   required
                   v-model="name"
+                  autofocus
                 ></v-text-field>
               </form>
             </v-card-text>

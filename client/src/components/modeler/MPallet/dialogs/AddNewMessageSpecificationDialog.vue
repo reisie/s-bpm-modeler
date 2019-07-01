@@ -16,6 +16,7 @@
                     id="name"
                     type="text"
                     required
+                    autofocus
                     v-model="messageSpecification.name"
                   ></v-text-field>
                 </form>

@@ -15,6 +15,7 @@
                   id="name"
                   type="text"
                   required
+                  autofocus
                   v-model="name"
                 ></v-text-field>
                 <div>
