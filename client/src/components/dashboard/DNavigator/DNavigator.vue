@@ -13,9 +13,6 @@
             <v-list-tile @click="showPmDialog()">
               <v-list-tile-title>Process Model</v-list-tile-title>
             </v-list-tile>
-            <v-list-tile @click="showPlDialog()">
-              <v-list-tile-title>Process Layer</v-list-tile-title>
-            </v-list-tile>
           </v-list>
         </v-menu>
       </v-toolbar>
@@ -29,7 +26,6 @@
 
     <pg-dialog ref="pgDialog" class="pa-0 ma-0"></pg-dialog>
     <pm-dialog ref="pmDialog" class="pa-0 ma-0"></pm-dialog>
-    <pl-dialog ref="plDialog" class="pa-0 ma-0"></pl-dialog>
   </div>
 </template>
 
@@ -38,14 +34,12 @@
   import DNavigatorItem from '@/components/dashboard/DNavigator/DNavigatorItem'
   import PgDialog from '@/components/dashboard/DNavigator/dialogs/PgDialog'
   import PmDialog from '@/components/dashboard/DNavigator/dialogs/PmDialog'
-  import PlDialog from '@/components/dashboard/DNavigator/dialogs/PlDialog'
   export default {
     name: 'DNavigator',
     components: {
       DNavigatorItem,
       PgDialog,
-      PmDialog,
-      PlDialog
+      PmDialog
     },
     computed: {
       ...mapGetters('common', ['treeData']),
@@ -59,9 +53,6 @@
       },
       showPmDialog () {
         this.$refs.pmDialog.show()
-      },
-      showPlDialog () {
-        this.$refs.plDialog.show()
       }
     }
   }
