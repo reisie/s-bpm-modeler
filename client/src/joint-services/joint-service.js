@@ -74,8 +74,15 @@ class JointService {
    * Add zooming functionality to the canvas.
    */
   addZooming () {
-    state.paper.on('blank:mousewheel', (event, x, y, delta) => {
-      const minScaleFactor = 0.7
+    this.addZoomEvent(state.paper)
+    // TODO: why does the following not work?
+    // jointService.getElementViews().forEach(el => this.addZoomEvent(el))
+    // jointService.getLinkViews().forEach(link => this.addZoomEvent(link))
+  }
+
+  addZoomEvent (object) {
+    object.on('blank:mousewheel', (event, x, y, delta) => {
+      const minScaleFactor = 0.2
       const scale = state.paper.scale()
       if (roundInt(scale.sx) > minScaleFactor && roundInt(scale.sy) > minScaleFactor) {
         state.paper.scale(scale.sx + (delta * 0.1), scale.sy + (delta * 0.1))
