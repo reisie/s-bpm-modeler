@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex xs12 sm12 md8 offset-md2 class="mb-5">
         <v-toolbar dark class="primary">
-          <v-toolbar-title class="headline">S-BPM Modeler</v-toolbar-title>
+          <v-toolbar-title class="headline">SO-PASS Process Modeler</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
             <v-btn flat to="/login">
@@ -19,9 +19,11 @@
       </v-flex>
       <v-flex xs12 sm12 md8 offset-md2 class="mb-5">
         <v-card class="pa-5">
-          <div class="text-xs-center display-3 mb-3">S-BPM Modeler</div>
+          <div class="text-xs-center display-3 mb-3">SO-PASS Process Modeler</div>
           <div class="text-xs-center headline mb-5">
-            Create, Import and Export S-BPM / I2PM PASS processes based on Web Ontology Language
+            Create, import and export subject-orientated process models using the parallel activity specification scheme (PASS).</br>
+            ((soon) Compatible with I2PM Standart PASS Web Ontology Lanague (OWL) 1.0.)</br></br>
+            Based on <a href="https://github.com/mkolodiy/s-bpm-modeler/">S-BPM-modeler by Maksym Kolodiy</a>.
           </div>
           <div class="text-xs-center">
             <v-btn primary large to="/login">

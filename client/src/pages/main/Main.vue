@@ -2,7 +2,7 @@
   <div>
     <v-navigation-drawer temporary v-model="sideNav">
       <v-toolbar flat class="Main__drawer">
-        <v-toolbar-title>S-BPM Modeler</v-toolbar-title>
+        <v-toolbar-title>SO-PASS Process Modeler</v-toolbar-title>
       </v-toolbar>
       <v-divider></v-divider>
       <v-list>
@@ -31,7 +31,7 @@
       <span class="hidden-sm-and-up"><v-toolbar-side-icon
         @click.stop="sideNav = !sideNav"
         class="hidden-sm-and-up"></v-toolbar-side-icon></span>
-      <v-toolbar-title class="mr-3">S-BPM Modeler</v-toolbar-title>
+      <v-toolbar-title class="mr-3">SO-PASS Process Modeler</v-toolbar-title>
       <v-toolbar-items class="hidden-xs-only">
         <v-btn flat to="/main/dashboard">
           <v-icon left dark>fa-tachometer</v-icon>
