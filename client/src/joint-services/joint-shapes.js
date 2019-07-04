@@ -1058,11 +1058,11 @@ joint.shapes.custom.ReceiveTransitionElementView = joint.dia.LinkView.extend({
     if (customAttrs.subject !== null) {
       subject.text('S: ' + jointService.getSubjectNameById(customAttrs.subject))
     }
-    subject.css({'font-size': sfont * 2})
+    subject.css({'font-size': sfont})
     if (customAttrs.messageSpecification !== null) {
       message.text('M: ' + jointService.getMessageSpecificationNameById(customAttrs.messageSpecification))
     }
-    message.css({'font-size': sfont * 2})
+    message.css({'font-size': sfont})
 
     const boxWidth = 180 * sx
     const boxHeight = 80 * sy
@@ -1181,7 +1181,7 @@ joint.shapes.custom.FunctionTransitionElementView = joint.dia.LinkView.extend({
     if (customAttrs.name !== null) {
       name.text(customAttrs.name)
     }
-    name.css({'font-size': sfont * 2})
+    name.css({'font-size': sfont})
 
     const boxWidth = 180 * sx
     const boxHeight = 80 * sy
