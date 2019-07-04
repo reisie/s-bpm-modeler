@@ -22,10 +22,10 @@ services:
 
     database:
         image: mongo
-        #        environment:
-        #    - POSTGRES_DB=sensorthings
-        #volumes:
-        #    - postgis_volume:/var/lib/postgresql/data
+        ports:
+            - "27017:27017"
+        volumes:
+            - mongo_volume:/data/db
 
-#volumes:
-    #postgis_volume:
+volumes:
+    mongo_volume:
