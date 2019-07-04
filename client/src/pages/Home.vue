@@ -32,6 +32,10 @@
               <v-icon dark class="pr-2">fa-user-plus</v-icon>
               Register
             </v-btn>
+            <v-btn primary large v-on:click="tempLogin">
+              <v-icon dark class="pr-2">fa-clock-o</v-icon>
+              Explore with temporary account
+            </v-btn>
           </div>
         </v-card>
       </v-flex>
@@ -40,8 +44,51 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex'
   export default {
-    name: 'Home'
+    name: 'Home',
+    data () {
+      return {
+        user: {
+          firstName: 'Temporary Account',
+          lastName: 'Temporary Account',
+          // TODO: replace random-string-generation by something more robust
+          email: Math.random().toString(36).substring(2, 15) + '@tempaccount.invalid',
+          password: Math.random().toString(36).substring(2, 15),
+          strategy: 'local'
+        }
+      }
+    },
+    methods: {
+      ...mapActions('auth', ['register']),
+      ...mapActions('auth', ['login']),
+      tempLogin: function (event) {
+        // TODO: account should be deleted by garbage collector in server
+        this.register(this.user)
+          .then(response => {
+            this.sendNotification('Temporary registration successful, logging on...', null, 'success')
+            this.login(this.user)
+              .then(response => {
+                this.$router.replace({path: '/main/dashboard'})
+              })
+              .catch(() => {
+                this.sendNotification('Login failed', 'Something went wrong.', 'error')
+                this.$router.replace({path: '/login'})
+              })
+          })
+          .catch(() => {
+            this.sendNotification('Registration failed', 'Something went wrong.', 'error')
+          })
+      },
+      sendNotification (title, text, type) {
+        this.$notify({
+          title: title,
+          text: text,
+          group: 'v-notifications',
+          type: type
+        })
+      }
+    }
   }
 </script>
 
