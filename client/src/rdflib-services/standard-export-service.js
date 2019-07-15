@@ -142,9 +142,9 @@ const descriptors = {
 
 const constants = {
   SPO: 'standard-pass-ont',
-  SPO_URI: 'http://www.i2pm.net/standard-pass-ont#',
+  SPO_URI: 'http://www.i2pm.net/standard-pass-ont',
   APO: 'abstract-pass-ont',
-  APO_URI: 'http://www.imi.kit.edu/abstract-pass-ont#',
+  APO_URI: 'http://www.imi.kit.edu/abstract-pass-ont',
   FILE_URI: null,
   PAGE_URI: 'http://www.s-bpm-ont.at'
 }
@@ -641,8 +641,8 @@ class StandardExportService {
 
     // TODO Append loaded ontologies
     entities
-      .append(rdflibConstants.SINGLE_TAB).appendLine(ENTITY, constants.SPO, constants.SPO_URI)
-      .append(rdflibConstants.SINGLE_TAB).appendLine(ENTITY, constants.APO, constants.APO_URI)
+      .append(rdflibConstants.SINGLE_TAB).appendLine(ENTITY, constants.SPO, constants.SPO_URI + '#')
+      .append(rdflibConstants.SINGLE_TAB).appendLine(ENTITY, constants.APO, constants.APO_URI + '#')
 
     owlFile
       .appendLine('<?xml version="1.0"?>')
@@ -683,8 +683,8 @@ class StandardExportService {
     // TODO
     const dynamicAttr = new StringBuilder({newline: '\r\n'})
     dynamicAttr
-      .append(rdflibConstants.SINGLE_TAB).appendLine(rdflibConstants.ATTR, rdflibConstants.XMLNS, constants.SPO, constants.SPO_URI)
-      .append(rdflibConstants.SINGLE_TAB).append(rdflibConstants.ATTR, rdflibConstants.XMLNS, constants.APO, constants.APO_URI)
+      .append(rdflibConstants.SINGLE_TAB).appendLine(rdflibConstants.ATTR, rdflibConstants.XMLNS, constants.SPO, constants.SPO_URI + '#')
+      .append(rdflibConstants.SINGLE_TAB).append(rdflibConstants.ATTR, rdflibConstants.XMLNS, constants.APO, constants.APO_URI + '#')
 
     /* Prepare owl file */
     const owlFile = this.prepareOwlFile()
@@ -828,7 +828,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, processModelUri))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.processLayer.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&abstract-pass-ont;' + descriptors.processLayer.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.processLayer.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -875,7 +875,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(subject.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.subject.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.subject.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.subject.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -923,7 +923,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(subject.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.interfaceSubject.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.interfaceSubject.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.interfaceSubject.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -969,7 +969,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(messageSpecification.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.messageSpecification.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.messageSpecification.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.messageSpecification.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -997,7 +997,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(messageExchange.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.messageExchange.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.messageExchange.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.messageExchange.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -1045,7 +1045,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(messageExchangeList.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.messageExchangeList.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.messageExchangeList.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.messageExchangeList.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -1107,7 +1107,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(behavior.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.behavior.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.behavior.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.behavior.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -1164,7 +1164,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(state.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, stateType)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + stateType))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.state.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -1185,12 +1185,12 @@ class StandardExportService {
     if (state.isInitial) {
       stateAsOwl
         .append(rdflibConstants.DOUBLE_TAB)
-        .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.state.type.initial)))
+        .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.state.type.initial))
         .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
     } else if (state.isEnd) {
       stateAsOwl
         .append(rdflibConstants.DOUBLE_TAB)
-        .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.state.type.end)))
+        .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.state.type.end))
         .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
     }
 
@@ -1216,7 +1216,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(sendTransition.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.sendTransition.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.sendTransition.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.sendTransition.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -1264,7 +1264,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(receiveTransition.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.receiveTransition.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.receiveTransition.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.receiveTransition.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -1312,7 +1312,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(functionTransition.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.functionTransition.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.functionTransition.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.functionTransition.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -1357,7 +1357,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(action.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, 'Action')))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + 'Action'))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, 'hasModelComponentID', rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -1398,7 +1398,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(nodeRepresentation.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.nodeRepresentation.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.nodeRepresentation.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.nodeRepresentation.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -1443,7 +1443,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(linkRepresentation.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.linkRepresentation.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.linkRepresentation.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.linkRepresentation.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -1494,7 +1494,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(vertex.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.vertex.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.vertex.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.vertex.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -1533,7 +1533,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(coordinates.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.coordinates.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.coordinates.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.coordinates.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
@@ -1571,7 +1571,7 @@ class StandardExportService {
       .append(rdflibConstants.SINGLE_TAB)
       .appendLine(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.OWL, rdflibConstants.OWL_ATTR.NAMED_INDIVIDUAL, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.ABOUT, this.createURI(measurements.id)))
       .append(rdflibConstants.DOUBLE_TAB)
-      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '{0}{1}'.format(constants.SPO_URI, descriptors.measurements.type)))
+      .append(rdflibConstants.START_TAG_WITH_ATTR, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.RESOURCE, '&standard-pass-ont;' + descriptors.measurements.type))
       .appendLine(rdflibConstants.END_TAG, rdflibConstants.RDF, rdflibConstants.RDF_ATTR.TYPE)
       .append(rdflibConstants.DOUBLE_TAB)
       .append(rdflibConstants.START_TAG_WITH_ATTR, constants.SPO, descriptors.coordinates.id, rdflibConstants.ATTR.format(rdflibConstants.RDF, rdflibConstants.RDF_ATTR.DATATYPE, '{0}{1}'.format(rdflibConstants.XSD_URI, 'string')))
