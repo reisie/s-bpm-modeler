@@ -12,6 +12,9 @@
             bottom
             required
           ></v-select>
+          <v-card-title class="subheading pa-0 ma-0">
+            <span>Make sure that the selections are consistent with the SID!</span>
+          </v-card-title>
           <v-select
             :items="messageSpecifications"
             item-text="name"

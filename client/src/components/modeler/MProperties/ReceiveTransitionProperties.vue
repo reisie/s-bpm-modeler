@@ -12,12 +12,15 @@
             bottom
             required
           ></v-select>
+          <v-card-title class="subheading pa-0 ma-0">
+            <span>Make sure that the selections are consistent with the SID!</span>
+          </v-card-title>
           <v-select
             :items="messageSpecifications"
             item-text="name"
             item-value="_id"
             v-model="properties.messageSpecification"
-            label="Message to be send"
+            label="Message to be received"
             bottom
             required
           ></v-select>
