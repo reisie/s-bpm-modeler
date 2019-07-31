@@ -21,8 +21,8 @@
         <v-card class="pa-5">
           <div class="text-xs-center display-3 mb-3">SO-PASS Process Modeler</div>
           <div class="text-xs-center headline mb-5">
-            Create, import and export subject-orientated process models using the parallel activity specification scheme (PASS).</br>
-            ((soon) Compatible with I2PM Standart PASS Web Ontology Lanague (OWL) 1.0.)</br></br>
+            Create, import and export subject-orientated process models using the Parallel Activity Specification Scheme (PASS).</br>
+            Compatible with I2PM Standard PASS Ontology 1.0.</br></br>
             Based on <a href="https://github.com/mkolodiy/s-bpm-modeler/">S-BPM-modeler by Maksym Kolodiy</a>.
           </div>
           <div class="text-xs-center">
