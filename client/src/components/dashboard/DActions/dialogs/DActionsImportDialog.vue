@@ -8,10 +8,6 @@
               Import
             </v-card-title>
             <v-card-text>
-              <p class="body-2">Please select an ontology version*:</p>
-              <v-checkbox class="pa-0" :label="'Standard S-BPM Ontology'" v-model="standardOnt" light></v-checkbox>
-              <v-checkbox class="pa-0" :label="'Custom S-BPM Ontology'" v-model="customOnt" light></v-checkbox>
-              <v-divider></v-divider>
               <p class="body-2 pt-3">Please select a file that should be imported*:</p>
               <input type="file" @change="onFileChange">
             </v-card-text>
@@ -37,7 +33,7 @@
         isOpen: false,
         fileAsString: null,
         fileName: null,
-        standardOnt: false,
+        standardOnt: true,
         customOnt: false
       }
     },
@@ -70,22 +66,10 @@
         }
       },
       reset () {
-        this.standardOnt = false
+        this.standardOnt = true
         this.customOnt = false
         this.fileAsString = null
         this.fileName = null
-      }
-    },
-    watch: {
-      standardOnt (val) {
-        if (val) {
-          this.customOnt = false
-        }
-      },
-      customOnt (val) {
-        if (val) {
-          this.standardOnt = false
-        }
       }
     }
   }

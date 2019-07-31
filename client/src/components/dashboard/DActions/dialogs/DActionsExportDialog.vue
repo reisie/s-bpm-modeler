@@ -8,10 +8,6 @@
               Export
             </v-card-title>
             <v-card-text>
-              <p class="body-2">Please select an ontology version*:</p>
-              <v-checkbox class="pa-0" :label="'Standard S-BPM Ontology'" v-model="standardOnt" light></v-checkbox>
-              <v-checkbox class="pa-0" :label="'Custom S-BPM Ontology'" v-model="customOnt" light></v-checkbox>
-              <v-divider></v-divider>
               <p class="body-2 pt-3">Please select if visual representation should be included:</p>
               <v-checkbox class="pa-0" :label="'Include visual representation'" v-model="includeVisualRepresentation" light></v-checkbox>
               <v-divider></v-divider>
@@ -46,7 +42,7 @@
       return {
         isOpen: false,
         data: null,
-        standardOnt: false,
+        standardOnt: true,
         customOnt: false,
         includeVisualRepresentation: false
       }
@@ -68,7 +64,7 @@
       },
       reset () {
         this.data = []
-        this.standardOnt = false
+        this.standardOnt = true
         this.customOnt = false
         this.includeVisualRepresentation = false
       },
@@ -86,18 +82,6 @@
           group: 'v-notifications',
           type: type
         })
-      }
-    },
-    watch: {
-      standardOnt (val) {
-        if (val) {
-          this.customOnt = false
-        }
-      },
-      customOnt (val) {
-        if (val) {
-          this.standardOnt = false
-        }
       }
     }
   }
