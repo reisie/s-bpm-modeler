@@ -1,15 +1,18 @@
-# S-BPM Modeling Platform #
+# SO-PASS Process Modeler #
 
-This is a modeling platform for S-BPM processes. S-BPM processes can be exported and imported as OWL 2 files. The modeling platform consists out of two parts: Frontend and Backend. The frontend is built with VueJS and JointJS. The backend is built with FeathersJS and MongoDB.
+This is a modeling platform for subject-orientated process models using the Parallel Activity Specification Scheme (PASS).
+It is forked from [S-BPM-modeler by Maksym Kolodiy](https://github.com/mkolodiy/s-bpm-modeler).
 
-> This S-BPM modeling platform is based on the S-BPM modeling platform available [here](https://github.com/stefanstaniAIM/IPPR2016).
+The modeling platform consists out of two parts: Frontend and Backend. The frontend is built with VueJS and JointJS. The backend is built with FeathersJS and MongoDB.
 
-## Tutorial Videos ##
-[German](https://youtu.be/d4Zes7RI4qo)
+## Usage ##
+
+The platform can be started using docker. Simply run ```docker-compose up --build``` in this repository.
+Afterwards, the modeler can be accessed using a webbrowser on [http://localhost:8080/](http://localhost:8080/).
 
 ## Functionalities ##
 
-The following table shows which S-BPM elements had been implemented and can be modeled in the S-BPM modeling platform.
+The following table shows which elements had been implemented and can be modeled with SO-PASS Process Modeler:
 
 | S-BPM elements | Implemented | Comment |
 | ------------ | ------------ | ------- |
@@ -35,34 +38,6 @@ The following table shows which S-BPM elements had been implemented and can be m
 | Behavior extension | No | - |
 | Alternative clause | No | - |
 | Visual representation | Yes | - |
-
-## Usage ##
-### Prerequisites ###
-
- - NodeJS
- - MongoDB
- 
-### Setup ###
-
-**Client:**
-
- - Go to ```client``` and run ```npm install```
-
-**Server:**
-
- - Go to ```server``` and run ```npm install```
- 
-### Startup ###
-
-**Client:**
-
- 1. Go to ```client``` and run ```npm start```
- 2. The application is accessible under ```http://localhost:8080/```
- 
-**Server:**
-
- 1. Start mongoDB server
- 2. Go to ```server``` and run ```npm start```
 
 ## License
 
